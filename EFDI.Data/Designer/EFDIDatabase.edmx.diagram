@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="56f7ff12de964ca19ce5c36758e75f50" Name="Diagram1" >
+        <EntityTypeShape EntityType="EFDI.Data.Context.Category" Width="1.5" PointX="1.375" PointY="3.25" />
+        <EntityTypeShape EntityType="EFDI.Data.Context.Recipe" Width="1.5" PointX="1.375" PointY="0.875" />
+        <AssociationConnector Association="EFDI.Data.Context.FK_Recipe_ToTable" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
