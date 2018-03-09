@@ -15,6 +15,8 @@ namespace EFDI
         [Dependency]
         public IRecipeService RecipeService { get; set;}
 
+        RecipeDomain currentRecipeDomain = new RecipeDomain();
+
         public Form1()
         {
             InitializeComponent();
@@ -54,6 +56,47 @@ namespace EFDI
 
             RecipeService.Insert(recipe);
             RecipeService.Save();
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Enter the Recipe Id in the textbox and click Find button", "Find Recipe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            currentRecipeDomain = RecipeService.GetEntityById(int.Parse(txtRecipeId.Text));
+            txtRecipeId.Text = currentRecipeDomain?.RecipeId.ToString();
+            txtRecipeName.Text = currentRecipeDomain?.RecipeName;
+            txtRecipeCategoryId.Text = currentRecipeDomain?.CategoryId.ToString();
+        }
+
+        private void ClearFields()
+        {
+            txtRecipeId.Clear();
+            txtRecipeName.Clear();
+            txtRecipeCategoryId.Clear();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Enter the Recipe Id in the textbox and click Find button before clicking Update button", "Update Recipe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (currentRecipeDomain != null)
+            {
+                currentRecipeDomain.RecipeName = txtRecipeName.Text;
+                currentRecipeDomain.CategoryId = int.Parse(txtRecipeCategoryId.Text);
+
+                RecipeService.Update(currentRecipeDomain);
+                RecipeService.Save();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (currentRecipeDomain != null &&
+                MessageBox.Show("Are you sure you want to delete this Recipe?", "Delete Recipe", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                RecipeService.Delete(currentRecipeDomain.RecipeId);
+                RecipeService.Save();
+            }
         }
     }
 }

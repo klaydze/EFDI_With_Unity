@@ -5,6 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="EFDIDatabase.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BlogSubscription">
+          <Key>
+            <PropertyRef Name="EmailAddress" />
+          </Key>
+          <Property Name="BlogSubscritionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserProfileID" Type="uniqueidentifier" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Subscribefrom" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDttm" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDttm" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="Id" />
@@ -33,6 +46,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="EFDIDatabaseStoreContainer">
+          <EntitySet Name="BlogSubscription" EntityType="Self.BlogSubscription" Schema="acn" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recipe" EntityType="Self.Recipe" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Recipe_ToTable" Association="Self.FK_Recipe_ToTable">
@@ -51,6 +65,7 @@
             <End Role="Category" EntitySet="Categories" />
             <End Role="Recipe" EntitySet="Recipes" />
           </AssociationSet>
+          <EntitySet Name="BlogSubscriptions" EntityType="EFDI.Data.Context.BlogSubscription" />
         </EntityContainer>
         <EntityType Name="Category">
           <Key>
@@ -81,6 +96,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="BlogSubscription">
+          <Key>
+            <PropertyRef Name="EmailAddress" />
+          </Key>
+          <Property Name="BlogSubscritionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserProfileID" Type="Guid" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Subscribefrom" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDttm" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDttm" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -103,6 +131,20 @@
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlogSubscriptions">
+            <EntityTypeMapping TypeName="EFDI.Data.Context.BlogSubscription">
+              <MappingFragment StoreEntitySet="BlogSubscription">
+                <ScalarProperty Name="ModifiedDttm" ColumnName="ModifiedDttm" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDttm" ColumnName="CreatedDttm" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Subscribefrom" ColumnName="Subscribefrom" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="UserProfileID" ColumnName="UserProfileID" />
+                <ScalarProperty Name="BlogSubscritionID" ColumnName="BlogSubscritionID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

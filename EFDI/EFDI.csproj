@@ -118,6 +118,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EFDI.CommonLibrary\EFDI.CommonLibrary.csproj">
+      <Project>{34F6DAAA-FB7D-4AD6-A9FB-AB94721EC1D3}</Project>
+      <Name>EFDI.CommonLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EFDI.Data\EFDI.Data.csproj">
       <Project>{F654FDD1-992A-4B5C-ACBA-5A4C94991911}</Project>
       <Name>EFDI.Data</Name>

@@ -56,6 +56,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EFDIDatabase.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BlogSubscription.cs">
+      <DependentUpon>EFDIDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Category.cs">
       <DependentUpon>EFDIDatabase.tt</DependentUpon>
     </Compile>

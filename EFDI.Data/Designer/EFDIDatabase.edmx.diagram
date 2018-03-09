@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="EFDI.Data.Context.Category" Width="1.5" PointX="1.375" PointY="3.25" />
         <EntityTypeShape EntityType="EFDI.Data.Context.Recipe" Width="1.5" PointX="1.375" PointY="0.875" />
         <AssociationConnector Association="EFDI.Data.Context.FK_Recipe_ToTable" />
+        <EntityTypeShape EntityType="EFDI.Data.Context.BlogSubscription" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
