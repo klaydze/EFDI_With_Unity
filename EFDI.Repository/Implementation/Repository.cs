@@ -21,8 +21,7 @@ namespace EFDI.Repository.Implementation
 
         internal readonly DbSet<TPersistenceModel> DbSet;
 
-        // TODO: Get Session User
-        private const string DefaultUser = @"Nextgen\NGAdmin";
+        private const string DefaultUser = @"user\default";
 
         public Repository(IDbContext context)
         {
